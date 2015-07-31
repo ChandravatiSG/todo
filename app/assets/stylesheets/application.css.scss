@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url(asset_path('glyphicons-halflings-regular.eot'));
+  src: url(asset_path('glyphicons-halflings-regular.eot?#iefix')) format('embedded-opentype'), url(asset_path('glyphicons-halflings-regular.woff')) format('woff'), url(asset_path('glyphicons-halflings-regular.ttf')) format('truetype'), url(asset_path('glyphicons-halflings-regular.svg#glyphicons_halflingsregular')) format('svg');
+}
+
+body{
+  margin: 5%;
+}
+
+.well {
+  text-align: center;
+  color: grey;
+}
+
+.well a {
+  color: grey;
+  text-decoration: none;
+}

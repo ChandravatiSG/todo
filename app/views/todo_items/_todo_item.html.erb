@@ -1,24 +1,47 @@
-<div class="row clearfix">
-  <% if todo_item.completed? %>
-    <div class="complete">
-      <%= link_to "Mark as Complete", complete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch %>
-    </div>
-    <div class="todo_item">
-      <p style="opacity: 0.4; color: red;"><strike><%= todo_item.content %></strike></p>
-    </div>
-    <div class="trash">
-      <%= link_to "Delete", todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: "Are you sure?" } %>      
-    </div>
-    <hr/>
-  <% else %>
-    <div class="complete">
-      <%= link_to "Mark as Complete", complete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch %>
-    </div>
-    <div class="todo_item">
-      <p><%= todo_item.content %></p>
-    </div>
-    <div class="trash">
-      <%= link_to "Delete", todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: "Are you sure?" } %>      
-    </div>
-  <% end %>
-</div>
+<% if todo_item.completed? %>
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <td class="col-md-3">
+          <%= link_to complete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch do %>
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+          <% end %>
+        </td>
+        <td class="col-md-6">
+          <div class="todo_item">
+            <p style="opacity: 0.4; color: red;"><strike><%= todo_item.content %></strike></p>
+          </div>
+        </td>
+        <td class="col-md-3">
+          <%= link_to todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<% else %>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <div class="complete">
+            <%= link_to "Mark as Complete", complete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch do %>
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <% end %>
+          </div>
+        </td>
+        <td>
+          <div class="todo_item">
+            <p><%= todo_item.content %></p>
+          </div>
+        </td>
+        <td>
+          <div class="trash">
+            <%= link_to "Delete", todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: "Are you sure?" } %>      
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
